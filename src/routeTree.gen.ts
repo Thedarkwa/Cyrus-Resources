@@ -13,8 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AcademicLevelsRouteImport } from './routes/academic-levels'
 import { Route as SubjectsRouteImport } from './routes/subjects'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesResourceIdRouteImport } from './routes/resources.$resourceId'
+import { Route as AdminResourcesIndexRouteImport } from './routes/admin.resources.index'
+import { Route as AdminResourcesResourceIdRouteImport } from './routes/admin.resources.$resourceId'
+import { Route as AdminResourcesNewRouteImport } from './routes/admin.resources.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -36,6 +42,21 @@ const SubjectsRoute = SubjectsRouteImport.update({
   path: '/subjects',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
+  id: '/admin/categories',
+  path: '/admin/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
   id: '/resources/',
   path: '/resources/',
@@ -46,22 +67,50 @@ const ResourcesResourceIdRoute = ResourcesResourceIdRouteImport.update({
   path: '/resources/$resourceId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminResourcesIndexRoute = AdminResourcesIndexRouteImport.update({
+  id: '/admin/resources/',
+  path: '/admin/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminResourcesResourceIdRoute =
+  AdminResourcesResourceIdRouteImport.update({
+    id: '/admin/resources/$resourceId',
+    path: '/admin/resources/$resourceId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminResourcesNewRoute = AdminResourcesNewRouteImport.update({
+  id: '/admin/resources/new',
+  path: '/admin/resources/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/academic-levels': typeof AcademicLevelsRoute
   '/subjects': typeof SubjectsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/resources/$resourceId': typeof ResourcesResourceIdRoute
+  '/admin/': typeof AdminIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/admin/resources/$resourceId': typeof AdminResourcesResourceIdRoute
+  '/admin/resources/new': typeof AdminResourcesNewRoute
+  '/admin/resources/': typeof AdminResourcesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/academic-levels': typeof AcademicLevelsRoute
   '/subjects': typeof SubjectsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/resources/$resourceId': typeof ResourcesResourceIdRoute
+  '/admin': typeof AdminIndexRoute
   '/resources': typeof ResourcesIndexRoute
+  '/admin/resources/$resourceId': typeof AdminResourcesResourceIdRoute
+  '/admin/resources/new': typeof AdminResourcesNewRoute
+  '/admin/resources': typeof AdminResourcesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +118,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/academic-levels': typeof AcademicLevelsRoute
   '/subjects': typeof SubjectsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/resources/$resourceId': typeof ResourcesResourceIdRoute
+  '/admin/': typeof AdminIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/admin/resources/$resourceId': typeof AdminResourcesResourceIdRoute
+  '/admin/resources/new': typeof AdminResourcesNewRoute
+  '/admin/resources/': typeof AdminResourcesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,24 +134,42 @@ export interface FileRouteTypes {
     | '/about'
     | '/academic-levels'
     | '/subjects'
+    | '/admin/categories'
+    | '/admin/login'
     | '/resources/$resourceId'
+    | '/admin/'
     | '/resources/'
+    | '/admin/resources/$resourceId'
+    | '/admin/resources/new'
+    | '/admin/resources/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/academic-levels'
     | '/subjects'
+    | '/admin/categories'
+    | '/admin/login'
     | '/resources/$resourceId'
+    | '/admin'
     | '/resources'
+    | '/admin/resources/$resourceId'
+    | '/admin/resources/new'
+    | '/admin/resources'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/academic-levels'
     | '/subjects'
+    | '/admin/categories'
+    | '/admin/login'
     | '/resources/$resourceId'
+    | '/admin/'
     | '/resources/'
+    | '/admin/resources/$resourceId'
+    | '/admin/resources/new'
+    | '/admin/resources/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -104,8 +177,14 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AcademicLevelsRoute: typeof AcademicLevelsRoute
   SubjectsRoute: typeof SubjectsRoute
+  AdminCategoriesRoute: typeof AdminCategoriesRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   ResourcesResourceIdRoute: typeof ResourcesResourceIdRoute
+  AdminIndexRoute: typeof AdminIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
+  AdminResourcesResourceIdRoute: typeof AdminResourcesResourceIdRoute
+  AdminResourcesNewRoute: typeof AdminResourcesNewRoute
+  AdminResourcesIndexRoute: typeof AdminResourcesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -138,6 +217,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SubjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/categories': {
+      id: '/admin/categories'
+      path: '/admin/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof AdminCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/': {
       id: '/resources/'
       path: '/resources'
@@ -152,6 +252,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesResourceIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/resources/': {
+      id: '/admin/resources/'
+      path: '/admin/resources'
+      fullPath: '/admin/resources/'
+      preLoaderRoute: typeof AdminResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/resources/$resourceId': {
+      id: '/admin/resources/$resourceId'
+      path: '/admin/resources/$resourceId'
+      fullPath: '/admin/resources/$resourceId'
+      preLoaderRoute: typeof AdminResourcesResourceIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/resources/new': {
+      id: '/admin/resources/new'
+      path: '/admin/resources/new'
+      fullPath: '/admin/resources/new'
+      preLoaderRoute: typeof AdminResourcesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -160,8 +281,14 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AcademicLevelsRoute: AcademicLevelsRoute,
   SubjectsRoute: SubjectsRoute,
+  AdminCategoriesRoute: AdminCategoriesRoute,
+  AdminLoginRoute: AdminLoginRoute,
   ResourcesResourceIdRoute: ResourcesResourceIdRoute,
+  AdminIndexRoute: AdminIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
+  AdminResourcesResourceIdRoute: AdminResourcesResourceIdRoute,
+  AdminResourcesNewRoute: AdminResourcesNewRoute,
+  AdminResourcesIndexRoute: AdminResourcesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

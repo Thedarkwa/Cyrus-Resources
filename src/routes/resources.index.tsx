@@ -21,22 +21,22 @@ import {
 } from "@/lib/data";
 
 type ResourceSearch = {
-  q?: string;
-  subject?: string;
-  stage?: string;
-  year?: string;
-  type?: string;
+  q?: string | undefined;
+  subject?: string | undefined;
+  stage?: string | undefined;
+  year?: string | undefined;
+  type?: string | undefined;
 };
 
 const ANY = "__any";
 
 export const Route = createFileRoute("/resources/")({
   validateSearch: (search: Record<string, unknown>): ResourceSearch => ({
-    q: typeof search.q === "string" ? search.q : undefined,
-    subject: typeof search.subject === "string" ? search.subject : undefined,
-    stage: typeof search.stage === "string" ? search.stage : undefined,
-    year: typeof search.year === "string" ? search.year : undefined,
-    type: typeof search.type === "string" ? search.type : undefined,
+    q: typeof search["q"] === "string" ? search["q"] as string : undefined,
+    subject: typeof search["subject"] === "string" ? search["subject"] as string : undefined,
+    stage: typeof search["stage"] === "string" ? search["stage"] as string : undefined,
+    year: typeof search["year"] === "string" ? search["year"] as string : undefined,
+    type: typeof search["type"] === "string" ? search["type"] as string : undefined,
   }),
   head: () => ({
     meta: [

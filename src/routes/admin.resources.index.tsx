@@ -60,7 +60,7 @@ function ManageResources() {
       .from("resources")
       .update({ is_published: !r.is_published })
       .eq("id", r.id);
-    if (error) return toast.error("Could not update status.");
+    if (error) { toast.error("Could not update status."); return; }
     void refresh();
   };
 
@@ -68,7 +68,7 @@ function ManageResources() {
     if (!toDelete) return;
     const { error } = await supabase.from("resources").delete().eq("id", toDelete.id);
     setToDelete(null);
-    if (error) return toast.error("Could not delete the resource.");
+    if (error) { toast.error("Could not delete the resource."); return; }
     toast.success("Resource deleted");
     void refresh();
   };

@@ -59,7 +59,7 @@ function ListManager({ kind }: { kind: Kind }) {
     const name = newName.trim();
     if (!name) return;
     const { error } = await supabase.from(kind).insert({ name });
-    if (error) return toast.error("Could not add — the name may already exist.");
+    if (error) { toast.error("Could not add — the name may already exist."); return; }
     setNewName("");
     refresh();
   };
@@ -68,14 +68,14 @@ function ListManager({ kind }: { kind: Kind }) {
     const name = editName.trim();
     if (!name) return;
     const { error } = await supabase.from(kind).update({ name }).eq("id", id);
-    if (error) return toast.error("Could not rename.");
+    if (error) { toast.error("Could not rename."); return; }
     setEditing(null);
     refresh();
   };
 
   const toggleActive = async (id: string, active: boolean) => {
     const { error } = await supabase.from("subjects").update({ is_active: !active }).eq("id", id);
-    if (error) return toast.error("Could not update.");
+    if (error) { toast.error("Could not update."); return; }
     refresh();
   };
 
@@ -85,7 +85,7 @@ function ListManager({ kind }: { kind: Kind }) {
       return;
     }
     const { error } = await supabase.from(kind).delete().eq("id", id);
-    if (error) return toast.error("Could not delete.");
+    if (error) { toast.error("Could not delete."); return; }
     refresh();
   };
 

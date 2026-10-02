@@ -23,6 +23,6 @@ export function isStage(value: string | undefined): value is Stage {
 
 export function summariseYears(years: string[] | null | undefined): string {
   if (!years || years.length === 0) return "All years";
-  if (years.length === 1) return years[0];
-  return `${years[0]}–${years[years.length - 1].replace("Year ", "")}`;
+  if (years.length === 1) return years[0] ?? "";
+  return `${years[0]}–${(years[years.length - 1] ?? "").replace("Year ", "")}`;
 }

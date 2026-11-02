@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { Lock } from "lucide-react";
+import { Eye, EyeOff, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,6 +26,7 @@ function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [showPw, setShowPw] = useState(false);
   const [slotsLeft, setSlotsLeft] = useState<number | null>(null);
 
   useEffect(() => {
@@ -53,8 +54,8 @@ function AdminLogin() {
         );
         return;
       }
-      toast.success("Account created. Check your email to confirm, then log in.");
-      setMode("login");
+      toast.success("Account created. Welcome!");
+      void navigate({ to: "/admin" });
       return;
     }
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -92,15 +93,26 @@ function AdminLogin() {
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="password">Password</Label>
+            <div className="relative">
             <Input
               id="password"
-              type="password"
+              className="pr-10"
+              type={showPw ? "text" : "password"}
               autoComplete={mode === "login" ? "current-password" : "new-password"}
               minLength={mode === "signup" ? 8 : undefined}
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <button
+              type="button"
+              aria-label={showPw ? "Hide password" : "Show password"}
+              onClick={() => setShowPw((v) => !v)}
+              className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground"
+            >
+              {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+            </button>
+            </div>
           </div>
         </div>
         <Button type="submit" className="mt-6 w-full" disabled={busy}>

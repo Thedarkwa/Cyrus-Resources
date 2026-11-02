@@ -8,6 +8,13 @@
       "when": 1790782688953,
       "tag": "0000_cyrus_resources_core",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793628045786,
+      "tag": "0001_six_admin_signup_limit",
+      "breakpoints": true
     }
   ]
 }

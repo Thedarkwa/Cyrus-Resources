@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/admin/login")({
+  ssr: false,
   head: () => ({
     meta: [
       { title: "Admin Login — Cyrus Resources" },
@@ -22,12 +24,20 @@ export const Route = createFileRoute("/admin/login")({
 
 function AdminLogin() {
   const navigate = useNavigate();
+  const { session, isAdmin, loading: authLoading } = useAuth();
   const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [showPw, setShowPw] = useState(false);
   const [slotsLeft, setSlotsLeft] = useState<number | null>(null);
+
+  // Signed-in admins never see the login page — send them to the dashboard.
+  useEffect(() => {
+    if (!authLoading && session && isAdmin) {
+      void navigate({ to: "/admin", replace: true });
+    }
+  }, [authLoading, session, isAdmin, navigate]);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

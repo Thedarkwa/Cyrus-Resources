@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { BookOpenCheck, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoAsset from "@/assets/cyrus-logo.png.asset.json";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -18,10 +19,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
         <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-          <span className="surface-brand flex size-9 items-center justify-center rounded-xl">
-            <BookOpenCheck className="size-5" />
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight">Cyrus Resources</span>
+          <img
+            src={logoAsset.url}
+            alt="Cyrus Resources"
+            className="h-10 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

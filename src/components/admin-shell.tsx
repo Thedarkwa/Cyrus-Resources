@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, type ReactNode } from "react";
-import { BookOpenCheck, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import logoAsset from "@/assets/cyrus-logo.png.asset.json";
 
 const NAV = [
   { to: "/admin", label: "Dashboard" },
@@ -58,7 +59,11 @@ export function AdminShell({ children }: { children: ReactNode }) {
       <header className="surface-brand">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4">
           <Link to="/admin" className="flex items-center gap-2 font-display font-semibold">
-            <BookOpenCheck className="size-5 text-gold" /> Cyrus Resources Admin
+            <img
+              src={logoAsset.url}
+              alt="Cyrus Resources Admin"
+              className="h-9 w-auto rounded-md bg-white px-2 py-1"
+            />
           </Link>
           <div className="flex items-center gap-3 text-sm">
             <Link to="/" className="opacity-80 hover:opacity-100">

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Search, Sparkles } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { PublicLayout } from "@/components/public-layout";
 import { ResourceCard } from "@/components/resource-card";
 import { Button } from "@/components/ui/button";
@@ -48,10 +48,7 @@ function Home() {
           className="absolute inset-0 size-full object-cover opacity-30"
         />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
-          <p className="inline-flex items-center gap-2 rounded-full bg-gold/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
-            <Sparkles className="size-3.5" /> Search. Discover. Learn.
-          </p>
-          <h1 className="mt-5 max-w-2xl text-4xl font-semibold sm:text-5xl">Cyrus Resources</h1>
+          <h1 className="max-w-2xl text-4xl font-semibold sm:text-5xl">Cyrus Resources</h1>
           <p className="mt-4 max-w-xl text-lg opacity-90">
             Your school's educational resources, all in one place.
           </p>

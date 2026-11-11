@@ -15,6 +15,13 @@
       "when": 1793628045786,
       "tag": "0001_six_admin_signup_limit",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794405013662,
+      "tag": "0002_thirty_admin_signup_limit",
+      "breakpoints": true
     }
   ]
 }

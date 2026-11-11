@@ -58,8 +58,8 @@ function AdminLogin() {
       setBusy(false);
       if (error) {
         toast.error(
-          /closed|6 admin|database error/i.test(error.message)
-            ? "Admin sign-up is closed — all 6 admin places are taken."
+          /closed|30 admin|database error/i.test(error.message)
+            ? "Admin sign-up is closed — all 30 admin places are taken."
             : error.message,
         );
         return;
@@ -93,7 +93,7 @@ function AdminLogin() {
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           {mode === "signup" && slotsLeft !== null
-            ? `${slotsLeft} of 6 admin places left.`
+            ? `${slotsLeft} of 30 admin places left.`
             : "Authorised personnel only."}
         </p>
         <div className="mt-6 space-y-4">

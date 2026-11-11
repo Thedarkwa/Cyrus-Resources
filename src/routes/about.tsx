@@ -50,9 +50,9 @@ function About() {
 
         <h2 className="mt-10 text-xl font-semibold">How it's organised</h2>
         <p className="mt-3 text-muted-foreground">
-          Every resource is tagged with a subject, an academic stage (Pre-School, Primary, O Level
-          or A Level), the year groups it suits, and a resource type — so you can filter down to
-          exactly the right material.
+          Every resource is tagged with a subject, an academic stage (Pre-School, Primary, Lower
+          Secondary or Upper Secondary), the year groups it suits, and a resource type — so you can
+          filter down to exactly the right material.
         </p>
 
         <h2 className="mt-10 text-xl font-semibold">Who maintains it</h2>

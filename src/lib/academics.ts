@@ -1,18 +1,18 @@
-export const STAGES = ["Pre-School", "Primary", "O Level", "A Level"] as const;
+export const STAGES = ["Pre-School", "Primary", "Lower Secondary", "Upper Secondary"] as const;
 export type Stage = (typeof STAGES)[number];
 
 export const YEARS_BY_STAGE: Record<Stage, string[]> = {
   "Pre-School": ["Pre-School"],
   Primary: ["Year 1", "Year 2", "Year 3", "Year 4", "Year 5", "Year 6"],
-  "O Level": ["Year 7", "Year 8", "Year 9"],
-  "A Level": ["Year 10", "Year 11", "Year 12"],
+  "Lower Secondary": ["Year 7", "Year 8", "Year 9"],
+  "Upper Secondary": ["Year 10", "Year 11", "Year 12"],
 };
 
 export const STAGE_BLURB: Record<Stage, string> = {
   "Pre-School": "Explore resources for early learners.",
   Primary: "Years 1–6",
-  "O Level": "Years 7–9",
-  "A Level": "Years 10–12",
+  "Lower Secondary": "Years 7–9",
+  "Upper Secondary": "Years 10–12",
 };
 
 export const ALL_YEARS = STAGES.flatMap((s) => YEARS_BY_STAGE[s]);

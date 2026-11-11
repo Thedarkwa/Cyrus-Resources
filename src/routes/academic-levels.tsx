@@ -11,7 +11,7 @@ export const Route = createFileRoute("/academic-levels")({
       {
         name: "description",
         content:
-          "Find resources for Pre-School, Primary (Years 1–6), O Level (Years 7–9) and A Level (Years 10–12).",
+          "Find resources for Pre-School, Primary (Years 1–6), Lower Secondary (Years 7–9) and Upper Secondary (Years 10–12).",
       },
       { property: "og:title", content: "Academic Levels — Cyrus Resources" },
       {
@@ -31,7 +31,7 @@ function AcademicLevels() {
       <PageHeader
         eyebrow="Academic Levels"
         title="Browse by stage and year"
-        description="Our academic structure runs from Pre-School through A Level."
+        description="Our academic structure runs from Pre-School through Upper Secondary."
       />
       <div className="mx-auto max-w-6xl space-y-8 px-4 py-12">
         {STAGES.map((stage) => {

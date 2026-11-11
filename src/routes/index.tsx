@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Search educational websites, learning platforms, videos, digital tools and revision resources for Pre-School through A Level.",
+          "Search educational websites, learning platforms, videos, digital tools and revision resources for Pre-School through Upper Secondary.",
       },
       { property: "og:title", content: "Cyrus Resources" },
       {
@@ -77,7 +77,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto -mt-10 max-w-3xl px-4">
+      <section className="relative z-10 mx-auto -mt-10 max-w-3xl px-4">
         <form
           className="rounded-2xl border border-border bg-card p-5 shadow-lg"
           onSubmit={(e) => {

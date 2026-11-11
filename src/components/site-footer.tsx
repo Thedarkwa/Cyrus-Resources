@@ -31,7 +31,7 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-8 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Cyrus Resources
+          © {new Date().getFullYear()} KevTech - Cyrus Resources
         </p>
       </div>
     </footer>
